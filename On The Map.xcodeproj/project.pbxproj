@@ -12,6 +12,8 @@
 		A338118F2495F5C1000553D1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338118E2495F5C1000553D1 /* LoginRequest.swift */; };
 		A33811912496CBF2000553D1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33811902496CBF2000553D1 /* LoginResponse.swift */; };
 		A37CE23A249406CF0008D7EF /* UserMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37CE239249406CF0008D7EF /* UserMarker.swift */; };
+		A3A2684F24972BC700C699E1 /* InfoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2684E24972BC700C699E1 /* InfoPostViewController.swift */; };
+		A3A2685324972E7B00C699E1 /* PostPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2685224972E7B00C699E1 /* PostPinViewController.swift */; };
 		A3C269E42490AA2C00932626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C269E32490AA2C00932626 /* AppDelegate.swift */; };
 		A3C269E62490AA2C00932626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C269E52490AA2C00932626 /* SceneDelegate.swift */; };
 		A3C269E82490AA2C00932626 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C269E72490AA2C00932626 /* MapViewController.swift */; };
@@ -32,6 +34,8 @@
 		A338118E2495F5C1000553D1 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		A33811902496CBF2000553D1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		A37CE239249406CF0008D7EF /* UserMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMarker.swift; sourceTree = "<group>"; };
+		A3A2684E24972BC700C699E1 /* InfoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostViewController.swift; sourceTree = "<group>"; };
+		A3A2685224972E7B00C699E1 /* PostPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPinViewController.swift; sourceTree = "<group>"; };
 		A3C269E02490AA2C00932626 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3C269E32490AA2C00932626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3C269E52490AA2C00932626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				A338118C2495E6F3000553D1 /* LoginViewController.swift */,
 				A3C269E72490AA2C00932626 /* MapViewController.swift */,
 				A3C269F72490B0A400932626 /* ListViewController.swift */,
+				A3A2684E24972BC700C699E1 /* InfoPostViewController.swift */,
+				A3A2685224972E7B00C699E1 /* PostPinViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,6 +208,8 @@
 				A3C269F82490B0A400932626 /* ListViewController.swift in Sources */,
 				A3C269FD24912ABC00932626 /* UserResponse.swift in Sources */,
 				A37CE23A249406CF0008D7EF /* UserMarker.swift in Sources */,
+				A3A2685324972E7B00C699E1 /* PostPinViewController.swift in Sources */,
+				A3A2684F24972BC700C699E1 /* InfoPostViewController.swift in Sources */,
 				A33811912496CBF2000553D1 /* LoginResponse.swift in Sources */,
 				A3C269E62490AA2C00932626 /* SceneDelegate.swift in Sources */,
 				A338118B2494BCAF000553D1 /* AnnotationView.swift in Sources */,

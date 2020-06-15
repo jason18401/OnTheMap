@@ -12,7 +12,8 @@ import CoreLocation
 
 class MapViewController: UIViewController {
 
-    @IBOutlet weak var mapKit: MKMapView!
+    
+    @IBOutlet weak var mapView: MKMapView!
     var locationManger: CLLocationManager?
 
     
@@ -29,20 +30,41 @@ class MapViewController: UIViewController {
         
         loadUserData()
         setupLocation()
-        mapKit.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 //        addAnnotations()
     }
 
     @IBAction func addItem(_ sender: Any) {
+        //pass user Key
+        
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
+        
+        mapView.removeAnnotations(self.mapView.annotations)
+        loadUserData()
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
-        dismiss(animated: true) {
-            //
+        UserAPI.shared.logoutRequest { result in
+            switch result {
+            case .success(_):
+                print("Success Logging out")
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true)
+                }
+                
+            case .failure(let error):
+                print("Failure Logging out \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Failed to Logout - Please try again", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
         }
+        
     }
     
     @IBAction func locateUserTapped(_ sender: Any) {
@@ -80,10 +102,10 @@ class MapViewController: UIViewController {
         let currentLatLong = CLLocation(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         let regionRadius: CLLocationDistance = 2000000.0
         let region = MKCoordinateRegion(center: currentLatLong.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapKit.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
 //        mapKit.addAnnotation(userPlaces) // as! MKAnnotation)
         
-        mapKit.delegate = self
+        mapView.delegate = self
     }
     
     func updateUI() {
@@ -102,7 +124,7 @@ class MapViewController: UIViewController {
                     //user data
                     let userModel = UserInfo(firstName: i.firstName, lastName: i.lastName, mediaURL: i.mediaURL, longitude: i.longitude, latitude: i.latitude)
                     
-                    print("USERDATA: \(userModel)")
+//                    print("USERDATA: \(userModel)")
                     //annotations
                     let coordinate = CLLocationCoordinate2D(latitude: i.latitude, longitude: i.longitude)
 //                    let userAnnotation = UserMarker(title: "\(i.firstName) \(i.lastName)", subtitle: i.mediaURL, coordinate: coordinate)
@@ -123,14 +145,14 @@ class MapViewController: UIViewController {
     }
     func addAnnotations(title: String, subTitle: String, coordinate: CLLocationCoordinate2D) {
         let userAnnotation = UserMarker(title: title, subtitle: subTitle, coordinate: coordinate)
-        mapKit.addAnnotation(userAnnotation)
+        mapView.addAnnotation(userAnnotation)
     }
     
-    func addAnnotations() {
-        let coordinate = CLLocationCoordinate2D(latitude: 37.4095, longitude: -122.0511)
-        let userAnnotation = UserMarker(title: "AIR", subtitle: "yEAG", coordinate: coordinate)
-        mapKit.addAnnotation(userAnnotation)
-    }
+//    func addAnnotations() {
+//        let coordinate = CLLocationCoordinate2D(latitude: 37.4095, longitude: -122.0511)
+//        let userAnnotation = UserMarker(title: "AIR", subtitle: "SUB", coordinate: coordinate)
+//        mapKit.addAnnotation(userAnnotation)
+//    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -147,7 +169,7 @@ extension MapViewController: CLLocationManagerDelegate {
         } else {
             guard let latest = locations.first else { return }
             let distanceInMeters = previousLocation?.distance(from: latest) ?? 0
-            print("distance in meters: \(distanceInMeters)")
+//            print("distance in meters: \(distanceInMeters)")
             previousLocation = latest
 //            addAnnotations()
         }

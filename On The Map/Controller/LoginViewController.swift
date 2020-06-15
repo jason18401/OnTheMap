@@ -43,9 +43,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 switch result {
 //                case .success(true):
 //                    print("YESS::")
-                case .success(let response):
+                case .success( _):
                     DispatchQueue.main.async {
-                        print("LOGINSUCCESS:: \(response.account.key)")
+//                        print("LOGINSUCCESS:: \(response.account.key)")
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     }
                 case .failure(let response):

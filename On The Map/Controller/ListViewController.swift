@@ -25,12 +25,33 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func addItem(_ sender: Any) {
+        //pass user Key
+        
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
+        loadUserData()
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
+        UserAPI.shared.logoutRequest { result in
+            switch result {
+            case .success(_):
+                print("Success Logging out")
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true)
+                }
+                
+            case .failure(let error):
+                print("Failure Logging out \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Failed to Logout - Please try again", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
     }
     
     func loadUserData() {
