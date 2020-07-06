@@ -93,6 +93,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return userCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = URL(string: userList[indexPath.row].mediaURL) {
+            UIApplication.shared.open(url)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
 
 }
